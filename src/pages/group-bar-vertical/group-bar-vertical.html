@@ -6,7 +6,7 @@
       </button>
     </ion-buttons>
     <ion-title>
-      Horizontal Bar Chart
+        Grouped Vertical Bar Chart
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,7 +15,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ngx-charts-bar-horizontal
+        <ngx-charts-bar-vertical-2d
           [view]="view"
           [results]="data"
           xAxis="true"
@@ -26,7 +26,7 @@
           [showYAxisLabel]="showYAxisLabel"
           xAxisLabel="GDP Per Capita"
           yAxisLabel="Country">
-        </ngx-charts-bar-horizontal>
+        </ngx-charts-bar-vertical-2d>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -53,7 +53,9 @@
               <tr *ngFor="let item of data; let i = index;">
                 <td>{{ i }}</td>
                 <td>{{ item.name }}</td>
-                <td>{{ item.value }}</td>
+                <td>
+                  <p *ngFor="let data of item.series">{{ data.value }}</p>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -61,4 +63,5 @@
       </ion-row>
   </ion-grid>
 </ion-content>
-    
+          
+  

@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
 
   rootPage = 'HomePage';
+  currentPage: string;
   @ViewChild(Nav) navMaster: Nav;
 
   constructor(
@@ -16,6 +17,7 @@ export class MyApp {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen
   ) {
+    this.currentPage = 'Homepage';
     this.platform.ready()
     .then(() => {
       this.initApp();
@@ -28,7 +30,12 @@ export class MyApp {
   }
 
   goToPage(page: string) {
+    this.currentPage = page;
     this.navMaster.setRoot(page);
+  }
+
+  isActive(page: string) {
+    return page === this.currentPage;
   }
 }
 

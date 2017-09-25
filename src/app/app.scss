@@ -92,3 +92,9 @@ striping:
 .pure-table-horizontal tbody > tr:last-child > td {
   border-bottom-width: 0;
 }
+
+ion-menu{
+  .item.active{
+    box-shadow: inset 5px 0px 0px 0px color($colors, dark);
+  }
+}

@@ -6,18 +6,55 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <button ion-item menuClose (click)="goToPage('HomePage')">
+      <button ion-item menuClose 
+        [class.active]="isActive('HomePage')"
+        (click)="goToPage('HomePage')">
         Home
       </button>
       <ion-list>
         <ion-list-header>
           Bar charts
         </ion-list-header>
-        <button ion-item menuClose (click)="goToPage('BarVerticalPage')">
+        <button 
+          ion-item menuClose 
+          [class.active]="isActive('BarVerticalPage')"
+          (click)="goToPage('BarVerticalPage')">
           Vertical Bar Chart
         </button>
-        <button ion-item menuClose (click)="goToPage('BarHorizontalPage')">
+        <button ion-item menuClose
+          [class.active]="isActive('BarHorizontalPage')" 
+          (click)="goToPage('BarHorizontalPage')">
           Horizontal Bar Chart
+        </button>
+        <button ion-item menuClose
+          [class.active]="isActive('GroupBarVerticalPage')" 
+          (click)="goToPage('GroupBarVerticalPage')">
+          Grouped Vertical Bar Chart
+        </button>
+        <button ion-item menuClose
+          [class.active]="isActive('GroupBarHorizontalPage')" 
+          (click)="goToPage('GroupBarHorizontalPage')">
+          Grouped Horizontal Bar Chart
+        </button>
+        <button ion-item menuClose
+          [class.active]="isActive('StackedBarVerticalPage')" 
+          (click)="goToPage('StackedBarVerticalPage')">
+          Stacked Vertical Bar Chart
+        </button>
+        <button ion-item menuClose
+          [class.active]="isActive('StackedBarHorizontalPage')" 
+          (click)="goToPage('StackedBarHorizontalPage')">
+          Stacked Horizontal Bar Chart
+        </button>
+        <button ion-item menuClose
+          [class.active]="isActive('NormalizedBarVerticalPage')" 
+          (click)="goToPage('NormalizedBarVerticalPage')">
+          Normalized Vertical Bar Chart
+        </button>
+        <button ion-item menuClose
+          [class.active]="isActive('NormalizedBarHorizontalPage')" 
+          (click)="goToPage('NormalizedBarHorizontalPage')">
+          Normalized Horizontal Bar Chart
         </button>
       </ion-list>
     </ion-content>
