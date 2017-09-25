@@ -16,6 +16,7 @@ export class GroupBarVerticalPage {
   showYAxisLabel: boolean;
   showLegend: boolean;
   interval: number;
+  barPadding = 1;
 
   constructor() {
     this.data = this.generateData();

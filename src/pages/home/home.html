@@ -1,16 +1,53 @@
 <ion-header>
   <ion-navbar color="dark">
-    <ion-title>
-      Home
-    </ion-title>
-    <ion-buttons>
-      <button ion-button menuToggle>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Bar charts
+    </ion-list-header>
+    <button 
+      ion-item menuClose 
+      (click)="goToPage('BarVerticalPage')">
+      Vertical Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('BarHorizontalPage')">
+      Horizontal Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('GroupBarVerticalPage')">
+      Grouped Vertical Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('GroupBarHorizontalPage')">
+      Grouped Horizontal Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('StackedBarVerticalPage')">
+      Stacked Vertical Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('StackedBarHorizontalPage')">
+      Stacked Horizontal Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('NormalizedBarVerticalPage')">
+      Normalized Vertical Bar Chart
+    </button>
+    <button ion-item menuClose
+      (click)="goToPage('NormalizedBarHorizontalPage')">
+      Normalized Horizontal Bar Chart
+    </button>
+  </ion-list>
 </ion-content>
