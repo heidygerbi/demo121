@@ -1,1 +1,27 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-split-pane>
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar color="dark">
+       <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <button ion-item menuClose (click)="goToPage('HomePage')">
+        Home
+      </button>
+      <ion-list>
+        <ion-list-header>
+          Bar charts
+        </ion-list-header>
+        <button ion-item menuClose (click)="goToPage('BarVerticalPage')">
+          Vertical Bar Chart
+        </button>
+        <button ion-item menuClose (click)="goToPage('BarHorizontalPage')">
+          Horizontal Bar Chart
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav [root]="rootPage" main #content></ion-nav>
+</ion-split-pane>
+

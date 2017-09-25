@@ -3,42 +3,59 @@ import { IonicPage, Content } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-bar-vertical',
+  templateUrl: 'bar-vertical.html',
 })
-export class HomePage {
+export class BarVerticalPage {
 
   @ViewChild(Content) content: Content;
-
   view: number[] = [700, 300];
   data: any[] = [];
-  realtime: boolean;
+  isRealtime: boolean;
   showXAxisLabel: boolean;
   showYAxisLabel: boolean;
   showLegend: boolean;
+  interval: number;
 
   constructor() {
     this.data = this.generateData();
   }
 
   ionViewDidLoad() {
-    const width = this.content.getContentDimensions().contentWidth - 50;
-    if (width <= 320 ) {
-      this.showXAxisLabel = false;
-      this.showYAxisLabel = false;
-      this.showLegend = false;
-    }
-    this.view = [width, 300];
+    this.applyDimensions();
+    window.addEventListener('resize', () => {
+      this.applyDimensions();
+    }, false);
   }
 
-  runRealTime() {
-    setInterval(() => {
-      this.updateData();
-    }, 1000);
+  ionViewDidLeave() {
+    clearInterval(this.interval);
+    window.removeEventListener('resize');
+  }
+
+  toggleRealTime( event: Event ) {
+    event.preventDefault();
+    this.isRealtime = !this.isRealtime;
+    if ( this.isRealtime ) {
+      this.interval = setInterval(() => {
+        this.updateData();
+      }, 1000);
+    }else {
+      clearInterval(this.interval);
+    }
   }
 
   updateData() {
     this.data = this.generateData();
+  }
+
+  applyDimensions() {
+    const width = this.content.getContentDimensions().contentWidth - 50;
+    const state = width >= 320;
+    this.showXAxisLabel = state;
+    this.showYAxisLabel = state;
+    this.showLegend = state;
+    this.view = [width, 300];
   }
 
   private generateData() {

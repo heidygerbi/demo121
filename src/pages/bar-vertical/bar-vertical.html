@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Vertical Bar Chart
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ngx-charts-bar-vertical
+          [view]="view"
+          [results]="data"
+          xAxis="true"
+          yAxis="true"
+          [legend]="showLegend"
+          legendTitle="Countries"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          xAxisLabel="Country"
+          yAxisLabel="GDP Per Capita">
+        </ngx-charts-bar-vertical>
+        <button ion-button icon-left 
+          (click)="toggleRealTime( $event )"
+          [color]="isRealtime ? 'secondary' : 'primary'">
+          <ion-icon [name]="isRealtime ? 'pause' : 'play'"></ion-icon>
+          RealTime
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          <table class="pure-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Coutry</th>
+                <th>GDP Per Capita</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data; let i = index;">
+                <td>{{ i }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.value }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
+  
