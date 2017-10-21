@@ -3,6 +3,7 @@ git branch -D gh-pages
 git push origin --delete gh-pages
 git checkout -b gh-pages
 ionic build --prod
+find . -type d ! -name 'www' ! -name '.git' ! -name '.' ! -name '..'  -delete
 mv www/* .
 rm -rf www
 git add .
